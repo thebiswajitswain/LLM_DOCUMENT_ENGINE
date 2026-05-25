@@ -5,6 +5,8 @@ require("dotenv").config();
 
 const healthRoutes = require("./routes/health.routes");
 const documentRoutes = require("./routes/document.routes");
+const langchainRoutes = require("./routes/langchain.routes");
+const langgraphRoutes = require("./routes/langgraph.routes");
 
 const app = express();
 
@@ -18,6 +20,8 @@ app.use(express.json());
 // Routes
 app.use("/", healthRoutes);
 app.use("/api/documents", documentRoutes);
+app.use("/api/langchain", langchainRoutes);
+app.use("/api/langgraph", langgraphRoutes);
 
 // 404 handler
 app.use((req, res) => {
@@ -49,6 +53,4 @@ app.use((error, req, res, next) => {
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running in ${env} mode on port ${PORT}`);
-});
+app.listen(PORT, () => { console.log(`Server running in ${env} mode on port ${PORT}`); });
